@@ -7,7 +7,7 @@ module.exports = {
     return res.json(spots)
   },
   async store(req, res) {
-    const { filename } = req.file
+    const filename = req.file.filename.replace(/[\ ]+/, '_')
     const { company, techs, price } = req.body
     const { user_id } = req.headers
     const user = await User.findById(user_id)
